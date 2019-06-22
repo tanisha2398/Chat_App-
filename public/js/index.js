@@ -4,6 +4,9 @@ socket.on("connect", function() {
 });
 socket.on("newMessage", function(msg) {
   console.log("got new message", msg);
+  var li = jQuery("<li></li>");
+  li.text(`${msg.from}:${msg.text}`);
+  jQuery("#messages").append(li);
 });
 socket.on("disconnect", function() {
   console.log("disconnected from server");
@@ -18,3 +21,14 @@ socket.emit(
     console.log("got it", data);
   }
 );
+jQuery("#message-form").on("submit", function(e) {
+  e.preventDefault();
+  socket.emit(
+    "createMessage",
+    {
+      from: "user",
+      text: jQuery("[name=message]").val()
+    },
+    function() {}
+  );
+});
