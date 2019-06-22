@@ -8,3 +8,13 @@ socket.on("newMessage", function(msg) {
 socket.on("disconnect", function() {
   console.log("disconnected from server");
 });
+socket.emit(
+  "createMessage",
+  {
+    from: "mitalu",
+    text: "i am going to party"
+  },
+  function(data) {
+    console.log("got it", data);
+  }
+);
