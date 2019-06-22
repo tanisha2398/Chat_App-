@@ -29,9 +29,36 @@
       </div>
     </div>
 
+    <script id="message-template" type="text/template">
+            <li class="message">
+      <div class="message__title">
+        <h4>{{from}}</h4>
+        <span>{{createdAt}}</span>
+        <div class="message__body">
+          <p>{{text}}</p>
+        </div>
+      </div>
+            </li>
+    </script>
+
+    <script id="location-message-template" type="text/template">
+            <li class="message">
+      <div class="message__title">
+        <h4>{{from}}</h4>
+        <span>{{createdAt}}</span>
+        <div class="message__body">
+          <p>
+            <a href="{{url}}" target="_blank">My current location</a>
+          </p>
+        </div>
+      </div>
+            </li>
+    </script>
+
     <script src="/socket.io/socket.io.js"></script>
     <script src="/js/lib/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.js"></script>
     <script src="/js/index.js"></script>
   </body>
 </html>
