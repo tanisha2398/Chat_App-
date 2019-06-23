@@ -39,15 +39,23 @@ io.on("connection", socket => {
   });
 
   socket.on("createMessage", (newmsg, callback) => {
-    console.log("createMessage", newmsg);
-    io.emit("newMessage", generateMessage(newmsg.from, newmsg.text));
+    var user = users.getUser(socket.id);
+    if (user && isRealString(newmsg.text)) {
+      io.to(user.room).emit(
+        "newMessage",
+        generateMessage(user.name, newmsg.text)
+      );
+    }
     callback();
   });
   socket.on("createLocationMessage", coords => {
-    io.emit(
-      "newLocationMessage",
-      generateLocationMessage("Admin", coords.latitude, coords.longitude)
-    );
+    var user = users.getUser(socket.id);
+    if (user) {
+      io.to(user.room).emit(
+        "newLocationMessage",
+        generateLocationMessage(user.name, coords.latitude, coords.longitude)
+      );
+    }
   });
   socket.on("disconnect", () => {
     var user = users.removeUser(socket.id);
