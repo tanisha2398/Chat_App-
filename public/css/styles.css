@@ -1,13 +1,108 @@
+:root {
+  --primary-blue: #2196f3;
+  --dark-blue: #1976d2;
+  --light-blue: #bbdefb;
+  --white: #ffffff;
+  --primary-text: #212121;
+  --secondary-text: #757575;
+  --light-gray: #bdbdbd;
+}
+
+/* resets */
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue",
-    Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: 300;
-  font-size: 0.95rem;
+}
+body {
+  font-family: Helvetica, sans-serif;
+  color: var(--primary-text);
+}
+/* helper classes */
+.flex {
+  display: flex;
+}
+.flex-center {
+  justify-content: center;
+  align-content: center;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
 }
 
+.flex-grow-1 {
+  flex-grow: 1;
+}
+.hidden {
+  display: none;
+}
+.mb-2 {
+  margin-bottom: 20px;
+}
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+/* text-classes */
+.primary-text {
+  color: var(--primary-text);
+}
+
+.secondary-text {
+  color: var(--secondary-text);
+}
+.light-text {
+  color: var(--light-blue);
+}
+.text-center {
+  text-align: center;
+}
+h1 {
+  font-size: 48px;
+  font-weight: 300;
+}
+/* header */
+header {
+  height: 150px;
+  background-color: var(--dark-blue);
+  width: 100%;
+  color: #ffffff;
+}
+header.container {
+  height: 100%;
+  align-items: left;
+}
+#appContainer {
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--primary-blue);
+}
+#mainContent {
+  justify-content: center;
+}
+/* login */
+#login {
+  background: white;
+  padding: 40px 100px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  margin-top: -35px;
+}
+/* form */
+input {
+  background: var(--light-blue);
+  border: none;
+  color: var(--secondary-text);
+}
+button {
+  border: none;
+  background-color: var(--primary-blue);
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  transition: background 0.3s ease;
+}
 ul,
 li {
   list-style-position: inside;
@@ -19,18 +114,9 @@ h3 {
   font-size: 1.5rem;
 }
 
-button {
-  border: none;
-  background: #265f82;
-  color: white;
-  cursor: pointer;
-  padding: 10px;
-  transition: background 0.3s ease;
-}
-
 button:hover {
   border: none;
-  background: #1f4c69;
+  background: var(--dark-blue);
   color: white;
   padding: 10px;
 }
@@ -116,38 +202,7 @@ button:disabled {
   overflow-y: scroll;
   width: 260px;
   height: 100vh;
-  background: -moz-linear-gradient(
-    125deg,
-    rgba(39, 107, 130, 1) 0%,
-    rgba(49, 84, 129, 1) 100%
-  ); /* ff3.6+ */
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right bottom,
-    color-stop(0%, rgba(49, 84, 129, 1)),
-    color-stop(100%, rgba(39, 107, 130, 1))
-  ); /* safari4+,chrome */
-  background: -webkit-linear-gradient(
-    125deg,
-    rgba(39, 107, 130, 1) 0%,
-    rgba(49, 84, 129, 1) 100%
-  ); /* safari5.1+,chrome10+ */
-  background: -o-linear-gradient(
-    125deg,
-    rgba(39, 107, 130, 1) 0%,
-    rgba(49, 84, 129, 1) 100%
-  ); /* opera 11.10+ */
-  background: -ms-linear-gradient(
-    125deg,
-    rgba(39, 107, 130, 1) 0%,
-    rgba(49, 84, 129, 1) 100%
-  ); /* ie10+ */
-  background: linear-gradient(
-    325deg,
-    rgba(39, 107, 130, 1) 0%,
-    rgba(49, 84, 129, 1) 100%
-  ); /* w3c */
+  background-color: var(--primary-blue);
 }
 
 .chat__sidebar h3 {
@@ -164,6 +219,7 @@ button:disabled {
   background: #e6eaee;
   border: 1px solid #e1e1e1;
   border-radius: 5px;
+  list-style: none;
   padding: 10px;
   margin: 10px;
 }
@@ -210,21 +266,36 @@ button:disabled {
 }
 
 .message {
+  background-color: var(--light-blue);
   padding: 10px;
+  width: 60%;
+  margin-bottom: 20px;
+}
+.message-right {
+  background-color: var(--light-blue);
+  padding: 10px;
+  color: var(--primary-text);
+  margin-left: 20%;
 }
 
 .message__title {
   display: flex;
   margin-bottom: 5px;
+  justify-content: space-between;
 }
 
 .message__title h4 {
-  font-weight: 600;
+  font-weight: 800;
   margin-right: 10px;
 }
 
 .message__title span {
+  font-weight: 100;
+  font-size: 14px;
   color: #999;
+}
+.message__body {
+  font-weight: 100;
 }
 
 @media (max-width: 600px) {

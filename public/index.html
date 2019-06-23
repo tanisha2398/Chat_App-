@@ -10,24 +10,36 @@
     <title>Join | Chatapp</title>
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
-  <body class="centered-form">
-    <div class="centered-form__form">
-      <form action="/chat.html">
-        <div class="form-field">
-          <h3>Join Chat</h3>
+  <body>
+    <div id="appContainer" class="flex-column">
+      <header>
+        <div class="container flex-column flex-center">
+          <h1>Let's Chat</h1>
+          <p class="light-text">Easiest way to get your message across</p>
         </div>
-        <div class="form-field">
-          <label>Display Name</label>
-          <input type="text" name="name" autofocus />
-        </div>
-        <div class="form-field">
-          <label>Room Name</label>
-          <input type="text" name="room" />
-        </div>
-        <div class="form-field">
-          <button>Join</button>
-        </div>
-      </form>
+      </header>
+      <div
+        id="mainContent"
+        class="container flex-grow-1 flex-column flex-center"
+      >
+        <section id="login">
+          <h2 class="text-center">Join Chat</h2>
+
+          <form id="loginForm" action="/chat.html">
+            <div class="form-field">
+              <label>Display Name</label>
+              <input type="text" name="name" autofocus />
+            </div>
+            <div class="form-field">
+              <label>Room Name</label>
+              <input type="text" name="room" />
+            </div>
+            <div class="form-field">
+              <button>Join</button>
+            </div>
+          </form>
+        </section>
+      </div>
     </div>
   </body>
 </html>
