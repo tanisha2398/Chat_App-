@@ -230,7 +230,16 @@ button:disabled {
   height: 100vh;
   width: 100%;
 }
-
+.chat__header {
+  align-content: flex-end;
+  background: var(--dark-blue);
+  color: #ffffff;
+  height: 34px;
+}
+h3 .nameh3 {
+  text-align: right;
+  margin-right: 21px;
+}
 .chat__messages {
   flex-grow: 1;
   overflow-y: scroll;

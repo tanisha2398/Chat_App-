@@ -15,6 +15,7 @@
       <div id="users"></div>
     </div>
     <div class="chat__main">
+      <h3 id="nameUser" class="chat__header"></h3>
       <ol id="messages" class="chat__messages"></ol>
 
       <div class="chat__footer">
@@ -31,7 +32,9 @@
         <button id="send-location">Send location</button>
       </div>
     </div>
-
+    <script id="name-template" type="text/template">
+      <h3 class="nameh3">{{from}}</h3>
+    </script>
     <script id="message-template" type="text/template">
             <li class="message">
       <div class="message__title">

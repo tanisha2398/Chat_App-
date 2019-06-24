@@ -27,6 +27,11 @@ socket.on("connect", function() {
       window.location.href = "/";
     } else {
       console.log("no error");
+      var template = jQuery("#name-template").html();
+      var html = Mustache.render(template, {
+        from: params.name
+      });
+      jQuery("#nameUser").append(html);
     }
   });
 });
