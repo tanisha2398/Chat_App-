@@ -272,7 +272,7 @@ button:disabled {
   margin-bottom: 20px;
 }
 .message-right {
-  background-color: var(--light-blue);
+  background-color: var(--dark-blue);
   padding: 10px;
   color: var(--primary-text);
   margin-left: 20%;

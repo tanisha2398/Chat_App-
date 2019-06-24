@@ -1,5 +1,9 @@
 var expect = require("expect");
-var { generateMessage, generateLocationMessage } = require("./message");
+var {
+  generateMessage,
+  generateAdminMessage,
+  generateLocationMessage
+} = require("./message");
 describe("generateMessage", () => {
   it("should generate correct message object", () => {
     var from = "Tanisha";
@@ -8,6 +12,14 @@ describe("generateMessage", () => {
 
     expect(typeof message.createdAt).toBe("number");
     expect(message).toMatchObject({ from, text });
+  });
+});
+describe("generateAdminMessage", () => {
+  it("should generate correct admin message", () => {
+    var text = "he joined";
+    var message = generateAdminMessage(text);
+    expect(typeof message.createdAt).toBe("number");
+    expect(message).toMatchObject({ text });
   });
 });
 describe("generateLocationMessage", () => {

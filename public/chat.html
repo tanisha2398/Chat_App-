@@ -15,9 +15,8 @@
       <div id="users"></div>
     </div>
     <div class="chat__main">
-      <ol id="messages" class="chat__messages">
-        <p class="secondary-text text-center mb-2"></p>
-      </ol>
+      <ol id="messages" class="chat__messages"></ol>
+
       <div class="chat__footer">
         <form id="message-form">
           <input
@@ -44,6 +43,24 @@
           <p>{{text}}</p>
         </div>
             </li>
+    </script>
+    <script id="message-other-template" type="text/template">
+            <li class="message-right">
+      <div class="message__title">
+        <h4 >{{from}}</h4>
+        <span >{{createdAt}}</span>
+      </div>
+      <div class="message__body">
+
+          <p>{{text}}</p>
+        </div>
+            </li>
+    </script>
+
+    <script id="message-admin-template" type="text/template">
+      <li >
+        <p class="secondary-text text-center mb-2">{{text}}</p>
+      </li>
     </script>
 
     <script id="location-message-template" type="text/template">

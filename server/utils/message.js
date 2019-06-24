@@ -6,6 +6,12 @@ var generateMessage = (from, text) => {
     createdAt: moment().valueOf()
   };
 };
+var generateAdminMessage = text => {
+  return {
+    text,
+    createdAt: moment().valueOf()
+  };
+};
 var generateLocationMessage = (from, latitude, longitude) => {
   return {
     from,
@@ -15,5 +21,6 @@ var generateLocationMessage = (from, latitude, longitude) => {
 };
 module.exports = {
   generateMessage,
+  generateAdminMessage,
   generateLocationMessage
 };

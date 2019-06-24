@@ -40,9 +40,15 @@ socket.on("updateUserList", function(users) {
 });
 
 socket.on("newMessage", function(msg) {
+  var params = jQuery.deparam(window.location.search);
   var formattedTime = moment(msg.createdAt).format("h:mm a");
-
-  var template = jQuery("#message-template").html();
+  console.log(params.name);
+  console.log(msg.from);
+  if (msg.from !== params.name) {
+    var template = jQuery("#message-template").html();
+  } else {
+    var template = jQuery("#message-other-template").html();
+  }
   var html = Mustache.render(template, {
     text: msg.text,
     from: msg.from,
@@ -52,7 +58,16 @@ socket.on("newMessage", function(msg) {
   scrollToBottom();
   // var formattedTime = moment(msg.createdAt).format("h:mm a");
 });
-
+socket.on("newAdminMessage", function(msg) {
+  var formattedTime = moment(msg.createdAt).format("h:mm a");
+  var template = jQuery("#message-admin-template").html();
+  var html = Mustache.render(template, {
+    text: msg.text,
+    createdAt: formattedTime
+  });
+  jQuery("#messages").append(html);
+  scrollToBottom();
+});
 socket.on("newLocationMessage", function(msg) {
   var formattedTime = moment(msg.createdAt).format("h:mm a");
   var template = jQuery("#location-message-template").html();
@@ -73,14 +88,15 @@ var messageTextBox = jQuery("[name=message]");
 
 jQuery("#message-form").on("submit", function(e) {
   e.preventDefault();
+
   socket.emit(
     "createMessage",
     {
-      from: "user",
+      from: jQuery.deparam(window.location.search).name,
       text: messageTextBox.val()
     },
     function() {
-      messageTextBox.val();
+      messageTextBox.val("");
     }
   );
 });
@@ -94,14 +110,14 @@ locationButton.on("click", function() {
   locationButton.attr("disabled", "disabled").text("Sending location...");
   navigator.geolocation.getCurrentPosition(
     function(position) {
-      locationButton.removeAttr("disabled").text("Sending location");
+      locationButton.removeAttr("disabled").text("Send location");
       socket.emit("createLocationMessage", {
         latitude: position.coords.latitude,
         longitude: position.coords.longitude
       });
     },
     function() {
-      locationButton.removeAttr("disabled").text("Sending location");
+      locationButton.removeAttr("disabled").text("Send location");
       alert("Unable to fetch location");
     }
   );
