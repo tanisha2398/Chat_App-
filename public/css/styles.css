@@ -270,12 +270,15 @@ button:disabled {
   padding: 10px;
   width: 60%;
   margin-bottom: 20px;
+  border-radius: 27px;
 }
 .message-right {
-  background-color: var(--dark-blue);
+  background-color: #6aa5f7;
   padding: 10px;
   color: var(--primary-text);
-  margin-left: 20%;
+  margin-left: 38%;
+  margin-bottom: 20px;
+  border-radius: 27px;
 }
 
 .message__title {
@@ -292,7 +295,7 @@ button:disabled {
 .message__title span {
   font-weight: 100;
   font-size: 14px;
-  color: #999;
+  color: #000000;
 }
 .message__body {
   font-weight: 100;

@@ -60,7 +60,9 @@ socket.on("newMessage", function(msg) {
 });
 socket.on("newAdminMessage", function(msg) {
   var formattedTime = moment(msg.createdAt).format("h:mm a");
+
   var template = jQuery("#message-admin-template").html();
+
   var html = Mustache.render(template, {
     text: msg.text,
     createdAt: formattedTime
@@ -70,7 +72,14 @@ socket.on("newAdminMessage", function(msg) {
 });
 socket.on("newLocationMessage", function(msg) {
   var formattedTime = moment(msg.createdAt).format("h:mm a");
-  var template = jQuery("#location-message-template").html();
+
+  var params = jQuery.deparam(window.location.search);
+  if (msg.from !== params.name) {
+    var template = jQuery("#location-message-template").html();
+  } else {
+    var template = jQuery("#location-other-template").html();
+  }
+
   var html = Mustache.render(template, {
     from: msg.from,
     createdAt: formattedTime,
