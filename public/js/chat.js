@@ -29,6 +29,13 @@ socket.on("connect", function() {
       console.log("no error");
       var template = jQuery("#name-template").html();
       var html = Mustache.render(template, {
+        from: params.name,
+        image: params.image,
+        room: params.room
+      });
+      jQuery(".currentUser").append(html);
+      var template = jQuery("#name-header").html();
+      var html = Mustache.render(template, {
         from: params.name
       });
       jQuery("#nameUser").append(html);
@@ -57,6 +64,7 @@ socket.on("newMessage", function(msg) {
   var html = Mustache.render(template, {
     text: msg.text,
     from: msg.from,
+    image: msg.image,
     createdAt: formattedTime
   });
   jQuery("#messages").append(html);

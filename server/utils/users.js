@@ -2,10 +2,11 @@ class Users {
   constructor() {
     this.users = [];
   }
-  addUser(id, name, room) {
+  addUser(id, name, image, room) {
     var user = {
       id,
       name,
+      image,
       room
     };
     this.users.push(user);

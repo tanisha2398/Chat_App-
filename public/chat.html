@@ -12,10 +12,13 @@
   <body class="chat">
     <div class="chat__sidebar">
       <h3>People</h3>
+      <div class="profile">
+        <div class="left currentUser"></div>
+      </div>
       <div id="users"></div>
     </div>
     <div class="chat__main">
-      <h3 id="nameUser" class="chat__header"></h3>
+      <h3 id="nameUser" class="chat__header "></h3>
       <ol id="messages" class="chat__messages"></ol>
 
       <div class="chat__footer">
@@ -32,12 +35,24 @@
         <button id="send-location">Send location</button>
       </div>
     </div>
+    <script id="name-header" type="text/template">
+      <h3>{{from}}</h3>
+    </script>
     <script id="name-template" type="text/template">
-      <h3 class="nameh3">{{from}}</h3>
+      <div>
+        <img src="{{image}}" alt="avatar" id="avatar" />
+      </div>
+      <div>
+        <p id="username" >{{from}}</p>
+        <h4 class="room">{{room}}</h4>
+        <!-- <button title="edit profile" class="edit button-text">edit</button> -->
+      </div>
     </script>
     <script id="message-template" type="text/template">
             <li class="message">
+
       <div class="message__title">
+          <img src="{{image}}" alt="avatar" id="avatar" />
         <h4 >{{from}}</h4>
         <span >{{createdAt}}</span>
       </div>
@@ -50,6 +65,7 @@
     <script id="message-other-template" type="text/template">
             <li class="message-right">
       <div class="message__title">
+          <img src="{{image}}" alt="avatar" id="avatar" />
         <h4 >{{from}}</h4>
         <span >{{createdAt}}</span>
       </div>

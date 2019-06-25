@@ -30,7 +30,12 @@ io.on("connection", socket => {
     }
     socket.join(params.room.toUpperCase());
     users.removeUser(socket.id);
-    users.addUser(socket.id, params.name, params.room.toUpperCase());
+    users.addUser(
+      socket.id,
+      params.name,
+      params.image,
+      params.room.toUpperCase()
+    );
 
     io.to(params.room.toUpperCase()).emit(
       "updateUserList",
@@ -54,7 +59,7 @@ io.on("connection", socket => {
     if (user.name === newmsg.from && isRealString(newmsg.text)) {
       io.to(user.room).emit(
         "newMessage",
-        generateMessage(user.name, newmsg.text)
+        generateMessage(user.name, newmsg.text, user.image)
       );
     }
     callback();
@@ -64,7 +69,12 @@ io.on("connection", socket => {
     if (user) {
       io.to(user.room).emit(
         "newLocationMessage",
-        generateLocationMessage(user.name, coords.latitude, coords.longitude)
+        generateLocationMessage(
+          user.name,
+          user.image,
+          coords.latitude,
+          coords.longitude
+        )
       );
     }
   });
