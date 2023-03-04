@@ -5,7 +5,7 @@ var socketIO = require("socket.io");
 const {
   generateMessage,
   generateAdminMessage,
-  generateLocationMessage
+  generateLocationMessage,
 } = require("./utils/message");
 const { isRealString } = require("./utils/validation");
 const { Users } = require("./utils/users");
@@ -18,7 +18,7 @@ var port = process.env.PORT || 3009;
 const publicPath = path.join(__dirname, "../public");
 
 app.use(express.static(publicPath));
-io.on("connection", socket => {
+io.on("connection", (socket) => {
   console.log("new user connected");
 
   socket.on("join", (params, callback) => {
@@ -64,7 +64,7 @@ io.on("connection", socket => {
     }
     callback();
   });
-  socket.on("createLocationMessage", coords => {
+  socket.on("createLocationMessage", (coords) => {
     var user = users.getUser(socket.id);
     if (user) {
       io.to(user.room).emit(
